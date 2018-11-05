@@ -6,7 +6,7 @@ class RoomsController < ApplicationController
 
   def new
     id = current_user.id
-    @users = User.where.not(id: id)
+    @users = User.where.not(id: id).reject{ |user| !current_user.following? user}
   end
 
   def create_group

@@ -2,9 +2,10 @@
   <% user = User.find_by(id: message.user) %>
   <% if user == current_user %>
     <div align="right"><p class="<%= message.id %>" id="message_content"><%= message.content %></p></div>
-    <div align="right"><p class="<%= message.id %>" id="message_sender"><%= user.name %></p></div>
+    <div align="right"><p class="<%= message.id %>" id="message_sender"><%= message.get_time %></p></div>
   <% else %>
-    <p class="<%= message.id %>" id="message_content"><%= message.content %></p>
     <p class="<%= message.id %>" id="message_sender"><%= user.name %></p>
+    <p class="<%= message.id %>" id="message_content"><%= message.content %></p>
+    <p class="<%= message.id %>" id="message_sender"><%= message.get_time %></p>
   <% end %>
 </div>

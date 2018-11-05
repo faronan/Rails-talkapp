@@ -1,0 +1,14 @@
+<h1>友達を探す</h1>
+<%= link_to "ホーム画面に戻る", :root %>
+<%= form_tag(user_get_path, :method => 'get') do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+<% if @users.any? %>
+  <% @users.each do |user| %>
+    <%= link_to user.name, user_get_confirm_path(id: user.id) %>
+    <br>
+  <% end %>
+<% end %>
