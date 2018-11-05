@@ -1,7 +1,7 @@
-<h1>ログインアプリ</h1>
+<h1>会話アプリ</h1>
 
 <% if user_signed_in? %> 
-  <h2> 現在 <%= current_user.name %> さんがログインしています </h2>
+  <h2> ようこそ <%= current_user.name %> さん </h2>
     <% if current_user.rooms.any? %>
       <ol class="rooms">
         <%= render @rooms %>

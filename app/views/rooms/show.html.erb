@@ -1,10 +1,10 @@
-<h1>Chat room</h1>
-
+<h1><%= @room.get_room_name(current_user) %>とのトーク</h1>
+<%= link_to "ホーム画面に戻る", :back %>
+<form>
+  <div class="message_form">
+     <%= render 'messages/message_form',{room_id: @room.id} %>
+  </div>
+</form>
 <div id="messages">
   <%= render @messages %>
 </div>
-
-<form>
-  <label>Say something:</label><br>
-  <input type="text" data-behavior="room_speaker">
-</form>

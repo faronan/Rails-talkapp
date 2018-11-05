@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
   def show
-    @messages = Message.all
+    @room = Room.find(params[:id])
+    @messages = Message.where(room: params[:id])
   end
 
   def new
