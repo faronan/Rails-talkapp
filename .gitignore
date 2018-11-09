@@ -3,8 +3,10 @@ capybara-*.html
 .rspec
 /log
 /tmp
-/db/*.sqlite3
-/db/*.sqlite3-journal
+/db/*
+!/db/schema.rb
+!/db/seeds.rb
+!/db/migrate
 /public/system
 /coverage/
 /spec/tmp
