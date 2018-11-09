@@ -1,0 +1,12 @@
+<h1>グループ作成</h1>
+<%= link_to "ホーム画面に戻る", :root %>
+<%= form_tag("/rooms/create_group") do %>
+  <ul>
+    <% if @users.any? %>
+      <% @users.each do |user| %>
+        <li><%= check_box "group_list", user.id %><%= user.name%></li>
+      <% end %>
+    <% end %>
+  </ul>
+  <input type="submit" value="作成">
+<% end %>
