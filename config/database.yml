@@ -49,6 +49,7 @@ test:
 #
 production:
   <<: *default
-  database: app_production
-  username: app
-  password: <%= ENV['APP_DATABASE_PASSWORD'] %>
+  database: Rails-talkapp_production
+  username: root
+  password:
+  host: localhost 
