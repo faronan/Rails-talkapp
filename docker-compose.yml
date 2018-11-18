@@ -1,0 +1,45 @@
+version: "3"
+
+services:
+  rails: &app_base
+    build:
+      context: "./docker"
+      dockerfile: "Dockerfile_rails"
+    container_name: rails
+    volumes:
+      - .:/home/app
+    ports:
+      - "3000:3000"
+    tty: true
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    depends_on:
+      - db
+    env_file:
+      - ".env"
+  db:
+    image: mysql:5.7
+    container_name: db
+    volumes:
+      - ./db:/var/lib/mysql
+    environment:
+      - MYSQL_USERNAME=root
+      - MYSQL_ROOT_PASSWORD=password
+  spring:
+    <<: *app_base
+    container_name: spring
+    command: bundle exec spring server
+    ports: []
+    tty: false
+    stdin_open: false
+  python:
+    build:
+      context: "./docker"
+      dockerfile: "Dockerfile_python"
+    container_name: python
+    working_dir: '/root/opt/'
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./python:/root/opt
+    tty: true
+    command: python server.py
