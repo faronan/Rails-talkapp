@@ -6,6 +6,8 @@
       <ol class="rooms">
         <%= render @rooms %>
       </ol>
+    <% else %>
+      <h3> グループが一つもありません </h3>
     <% end %>
     <%= link_to "友達を探す", user_get_path, class: 'post' %>
     <%= link_to "グループを作る", rooms_new_path, class: 'post' %>

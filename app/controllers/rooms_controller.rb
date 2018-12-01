@@ -11,6 +11,9 @@ class RoomsController < ApplicationController
 
   def create_group
     group_list = params[:group_list].reject{ |title, status| status == "0"}.keys.map{|id| User.find(id)}
+    if group_list.empty?
+      return redirect_to rooms_new_path, alert: "一人以上選択して下さい！"
+    end
     group_list << current_user
     Room.create(users: group_list)
     redirect_to controller: 'user', action: 'show'

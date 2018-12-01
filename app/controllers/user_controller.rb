@@ -6,6 +6,7 @@ class UserController < ApplicationController
     def get
        return unless user_signed_in?
        @users = User.search(params[:search]).reject{ |user| user == current_user}
+       flash.now[:notice] = "条件に合うユーザーは一人もいません" if @users.empty?
     end
     def get_confirm
         @user = User.find(params[:id])
