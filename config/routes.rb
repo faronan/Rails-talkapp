@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   get 'rooms/show', to: 'rooms#show', as: 'rooms_show'
   get 'rooms/new'
   post'rooms/create_group'
+  post'rooms/create_image_massage'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

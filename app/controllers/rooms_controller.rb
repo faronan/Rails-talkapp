@@ -18,4 +18,17 @@ class RoomsController < ApplicationController
     Room.create(users: group_list)
     redirect_to controller: 'user', action: 'show'
   end
+
+  def create_image_massage
+    @message = Message.new(permit_params)
+    @message.user = current_user.id
+    @message.save!
+    redirect_to action: 'show', id: permit_params[:room]
+  end
+
+  private
+    def permit_params
+      params.require(:post).permit(:image, :room)
+    end
+
 end

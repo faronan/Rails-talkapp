@@ -2,6 +2,11 @@
   <% user = User.find_by(id: message.user) %>
   <p id="message_sender">@<%= user.name %>  <%= message.get_time %></p>
   <ul>
-    <p id="message_content"><%= message.content %></p>
+    <% unless message.content.nil?%>
+      <p id="message_content"><%= message.content %></p>
+    <% end %>
+    <% unless message.image.url.nil?%>
+      <%= image_tag message.image.url %>
+    <% end %>
   </ul>
 </div>
