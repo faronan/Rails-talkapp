@@ -2,7 +2,7 @@
 
 <% if user_signed_in? %> 
   <h2> ようこそ <%= current_user.name %> さん </h2>
-    <% if current_user.rooms.any? %>
+    <% if @rooms.any? %>
       <ol class="rooms">
         <%= render @rooms %>
       </ol>
@@ -11,6 +11,7 @@
     <% end %>
     <%= link_to "友達を探す", user_get_path, class: 'post' %>
     <%= link_to "グループを作る", rooms_new_path, class: 'post' %>
+    <%= link_to "顔判定をしに行く", rooms_special_show_path, class: 'get' %>
   <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
 <% else %>
   <h2> 現在ログインしていません </h2>

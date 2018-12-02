@@ -1,0 +1,13 @@
+<form class="message_form">
+  <input type="hidden" name="room_id" value="<%= room_id %>">
+  <h3><label>メッセージを送信して下さい </label><h3>
+  <h5>始める時は”これが私です”と教えてから画像を送信してください <br><h5>
+  <input type="text" data-behavior="room_speaker">
+</form>
+
+<%= form_for :post, url: 'special_message'  do |f| %>
+  <%= f.hidden_field :room, :value => room_id %>
+  <p><%=f.label "画像をアップロード" %><br><%= f.file_field :image %></p>
+  <p><%= f.submit value: '投稿' %></p>
+<% end %>
+<%= button_to '判定', rooms_special_judge_path, method: :get %>

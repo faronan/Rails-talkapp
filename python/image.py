@@ -14,9 +14,10 @@ def get_rects(image):
     rects = detector(image, 1)
     return rects
 
-#画像のパスから顔の特徴量を求める
-def get_landmarks(image_path):
-    image = cv2.imread(image_path, cv2.COLOR_BGR2GRAY)
+#画像のパスから顔の特徴量を求める =>画像から顔の特徴量を求める
+#def get_landmarks(image_path):
+def get_landmarks(image):
+    #image = cv2.imread(image_path, cv2.COLOR_BGR2GRAY)
     rects = get_rects(image)
     if len(rects) != 1:
         #顔が一つじゃない時のエラーハンドリング
@@ -64,6 +65,7 @@ def get_similar_parts(source, target):
     
     return parts_dict[index]
 
+"""
 def main():
     image_path_list= []
     image_path_list.extend(glob(os.path.join(IMAGE_FOLDA_PATH, '*.jpg')))
@@ -84,3 +86,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+"""

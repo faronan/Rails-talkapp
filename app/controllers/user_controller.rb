@@ -1,7 +1,7 @@
 class UserController < ApplicationController
     def show
        return unless user_signed_in?
-       @rooms = current_user.rooms
+       @rooms = current_user.rooms.reject{|room| room.users.any?{|user|user.id== 99}}
     end
     def get
        return unless user_signed_in?
