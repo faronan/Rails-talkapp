@@ -1,0 +1,15 @@
+FROM python:3.6
+ENV LANG C.UTF-8
+
+RUN pip install numpy \
+ && pip install opencv-python\
+ && pip install flask\
+ && pip install requests
+
+RUN curl -OL https://cmake.org/files/v3.12/cmake-3.12.2.tar.gz \
+ && tar xvf cmake-3.12.2.tar.gz
+WORKDIR cmake-3.12.2
+RUN ./configure \
+ && make \
+ && make install \
+ && pip install dlib

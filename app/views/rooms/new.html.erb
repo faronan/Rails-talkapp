@@ -1,5 +1,10 @@
 <h1>グループ作成</h1>
 <%= link_to "ホーム画面に戻る", :root %>
+<% unless flash.empty? %> 
+    <script type="text/javascript">
+      toastr.error('<%= flash[:alert] %>')
+    </script>
+<% end %>
 <%= form_tag("/rooms/create_group") do %>
   <ul>
     <% if @users.any? %>
