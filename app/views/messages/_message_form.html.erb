@@ -3,3 +3,9 @@
   <h3><label>メッセージを送信して下さい </label><br><h3>
   <input type="text" data-behavior="room_speaker">
 </form>
+
+<%= form_for :post, url: 'create_image_massage'  do |f| %>
+  <%= f.hidden_field :room, :value => room_id %>
+  <p><%=f.label "画像をアップロード" %><br><%= f.file_field :image %></p>
+  <p><%= f.submit value: '投稿' %></p>
+<% end %>

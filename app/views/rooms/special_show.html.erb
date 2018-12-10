@@ -1,0 +1,10 @@
+<h1>顔判定ルーム</h1>
+<%= link_to "ホーム画面に戻る", :root %>
+<form>
+  <div class="message_form">
+     <%= render 'messages/message_special_form',{room_id: @room.id} %>
+  </div>
+</form>
+<div id="messages">
+  <%= render @messages %>
+</div>

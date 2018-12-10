@@ -1,5 +1,10 @@
 <h1>友達を探す</h1>
 <%= link_to "ホーム画面に戻る", :root %>
+<% unless flash.empty? %> 
+    <script type="text/javascript">
+      toastr.warning('<%= flash[:notice] %>')
+    </script>
+<% end %>
 <%= form_tag(user_get_path, :method => 'get') do %>
   <p>
     <%= text_field_tag :search, params[:search] %>
